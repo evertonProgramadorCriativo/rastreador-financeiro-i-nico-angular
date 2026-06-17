@@ -1,0 +1,29 @@
+# Dependências
+node_modules/
+.npm
+
+# Build outputs
+www/
+dist/
+
+# Angular cache
+.angular/
+
+# Environments locais (nunca commitar secrets)
+src/environments/environment.local.ts
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+.docker/
+
+# Logs
+*.log
+npm-debug.log*

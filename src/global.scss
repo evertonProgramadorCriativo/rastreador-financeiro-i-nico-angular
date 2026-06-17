@@ -1,0 +1,59 @@
+// Ionic core styles (obrigatórios)
+@import "@ionic/angular/css/core.css";
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+// Valores positivos: verde
+.value-positive {
+  color: var(--ion-color-success);
+  font-weight: 500;
+}
+
+// Valores negativos: vermelho
+.value-negative {
+  color: var(--ion-color-danger);
+  font-weight: 500;
+}
+
+// Card padrão do app
+.app-card {
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin: 8px 16px;
+}
+
+// Container de gráfico
+.chart-container {
+  position: relative;
+  height: 220px;
+  padding: 8px 0;
+}
+
+// Estado vazio
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  gap: 12px;
+  color: var(--ion-color-medium);
+  text-align: center;
+
+  ion-icon {
+    font-size: 48px;
+    opacity: 0.4;
+  }
+
+  p {
+    font-size: 14px;
+    margin: 0;
+  }
+}

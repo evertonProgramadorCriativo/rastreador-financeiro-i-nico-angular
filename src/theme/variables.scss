@@ -1,0 +1,49 @@
+// Ionic CSS Variables
+// Docs: https://ionicframework.com/docs/theming/css-variables
+
+:root {
+  // Cor primária (roxo)
+  --ion-color-primary: #534ab7;
+  --ion-color-primary-rgb: 83, 74, 183;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #4941a1;
+  --ion-color-primary-tint: #645cbf;
+
+  // Sucesso — receitas / positivo
+  --ion-color-success: #1d9e75;
+  --ion-color-success-rgb: 29, 158, 117;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-shade: #1a8b67;
+  --ion-color-success-tint: #34a883;
+
+  // Perigo — despesas / negativo
+  --ion-color-danger: #e24b4a;
+  --ion-color-danger-rgb: 226, 75, 74;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-shade: #c74241;
+  --ion-color-danger-tint: #e55d5c;
+
+  // Warning — faturas pendentes
+  --ion-color-warning: #ba7517;
+  --ion-color-warning-rgb: 186, 117, 23;
+  --ion-color-warning-contrast: #ffffff;
+  --ion-color-warning-shade: #a46714;
+  --ion-color-warning-tint: #c1832e;
+
+  // Fonte padrão
+  --ion-font-family: -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+}
+
+// Dark mode
+body.dark {
+  --ion-color-primary: #7f77dd;
+  --ion-background-color: #121212;
+  --ion-background-color-rgb: 18, 18, 18;
+  --ion-text-color: #f1f1f1;
+  --ion-text-color-rgb: 241, 241, 241;
+  --ion-toolbar-background: #1e1e1e;
+  --ion-item-background: #1e1e1e;
+  --ion-card-background: #1e1e1e;
+}
