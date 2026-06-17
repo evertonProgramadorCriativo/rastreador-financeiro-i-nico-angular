@@ -1,0 +1,31 @@
+# Dependências — serão instaladas dentro do container
+node_modules/
+
+# Builds gerados localmente
+www/
+dist/
+.angular/
+
+# Controle de versão
+.git/
+.gitignore
+
+# IDE e editores
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Arquivos de teste e CI
+coverage/
+.github/
+
+# Docker (não incluir o próprio compose no contexto)
+docker-compose*.yml
+Dockerfile

@@ -1,0 +1,15 @@
+services:
+  finance-app:
+    build:
+      context: .
+      target: dev # usa o stage de desenvolvimento
+    container_name: finance-app-dev
+    ports:
+      - "4200:4200" # ionic serve
+    volumes:
+      - .:/app # sincroniza código local com container
+      - /app/node_modules # preserva node_modules do container
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true # hot-reload em Docker no Windows/Mac
+    restart: unless-stopped
