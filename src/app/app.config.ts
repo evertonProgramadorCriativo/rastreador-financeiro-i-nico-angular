@@ -58,6 +58,10 @@ import { registerLocaleData } from '@angular/common';
 // usados para data, moeda e números.
 import localePt from '@angular/common/locales/pt';
 
+// ng2-charts v5 — provider de configuração global
+import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
+
+// Registra locale pt-BR para pipes de data e moeda
 
 // ==========================================
 // REGISTRO DO LOCALE
@@ -164,6 +168,9 @@ export const appConfig: ApplicationConfig = {
     // HttpClient não funciona.
     provideHttpClient(),
 
+    // Registra todos os tipos de gráfico do Chart.js automaticamente
+    // (Line, Bar, Pie, Doughnut, Radar, PolarArea, Bubble, Scatter)
+    provideCharts(withDefaultRegisterables()),
 
     // ==========================================
     // LOCALE (IDIOMA)
