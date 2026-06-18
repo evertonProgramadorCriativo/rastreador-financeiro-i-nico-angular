@@ -1,0 +1,169 @@
+.register-content {
+  --background: #f4f4fb;
+}
+
+.register-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  padding: 28px 20px 40px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.logo-area {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.logo-circle {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: #EEEDFE;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 10px;
+}
+
+.logo-icon {
+  font-size: 28px;
+  color: var(--ion-color-primary);
+}
+
+.page-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--ion-text-color);
+  margin: 0 0 4px;
+}
+
+.page-subtitle {
+  font-size: 13px;
+  color: var(--ion-color-medium);
+  margin: 0;
+}
+
+.field-group {
+  margin-bottom: 14px;
+}
+
+.field-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ion-text-color);
+  margin-bottom: 6px;
+}
+
+.input-wrap {
+  display: flex;
+  align-items: center;
+  border: 0.5px solid var(--ion-color-light-shade);
+  border-radius: 10px;
+  padding: 0 12px;
+  height: 44px;
+  background: #fff;
+  transition: border-color 0.15s, box-shadow 0.15s;
+
+  &:focus-within {
+    border-color: var(--ion-color-primary);
+    box-shadow: 0 0 0 3px rgba(83, 74, 183, 0.1);
+  }
+
+  &.input-error {
+    border-color: var(--ion-color-danger);
+    box-shadow: 0 0 0 3px rgba(226, 75, 74, 0.1);
+  }
+
+  &.input-ok {
+    border-color: var(--ion-color-success);
+  }
+}
+
+.input-icon {
+  font-size: 18px;
+  color: var(--ion-color-medium);
+  flex-shrink: 0;
+  margin-right: 8px;
+}
+
+.input-icon-right {
+  font-size: 18px;
+  color: var(--ion-color-medium);
+  flex-shrink: 0;
+  cursor: pointer;
+  margin-left: 4px;
+}
+
+.ok-icon {
+  color: var(--ion-color-success);
+  cursor: default;
+}
+
+.custom-input {
+  flex: 1;
+  --padding-start: 0;
+  --padding-end: 0;
+  font-size: 14px;
+}
+
+.field-error {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 5px;
+  font-size: 12px;
+  color: var(--ion-color-danger);
+
+  ion-icon {
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+}
+
+// Barra de força da senha
+.strength-row {
+  margin-top: 6px;
+}
+
+.strength-bar {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.strength-seg {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--ion-color-light-shade);
+  transition: background 0.2s;
+}
+
+.strength-label {
+  font-size: 11px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.btn-register {
+  margin-top: 8px;
+  --border-radius: 10px;
+  height: 46px;
+  font-size: 15px;
+}
+
+.login-row {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 13px;
+  color: var(--ion-color-medium);
+
+  a {
+    color: var(--ion-color-primary);
+    font-weight: 500;
+    text-decoration: none;
+  }
+}
