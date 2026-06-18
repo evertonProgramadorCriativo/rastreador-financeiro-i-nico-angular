@@ -1,0 +1,52 @@
+ <ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Dashboard</ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="notifications-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="dashboard-content">
+
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <!-- Seletor de período -->
+  <div class="period-selector">
+    <ion-segment
+      [value]="selectedPeriod"
+      (ionChange)="onPeriodChange($event)"
+      mode="md">
+      <ion-segment-button value="3m">
+        <ion-label>3 meses</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="6m">
+        <ion-label>6 meses</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="1a">
+        <ion-label>1 ano</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </div>
+
+  <!-- Cards de resumo -->
+  <app-summary-cards
+    *ngIf="summary && !isLoading"
+    [summary]="summary"
+    [periodLabel]="periodLabel">
+  </app-summary-cards>
+
+  <!-- Skeleton loading -->
+  <div class="skeleton-wrap" *ngIf="isLoading">
+    <div class="skeleton-balance"></div>
+    <div class="skeleton-row">
+      <div class="skeleton-mini"></div>
+      <div class="skeleton-mini"></div>
+    </div>
+  </div>
+
+</ion-content>

@@ -1,0 +1,56 @@
+.dashboard-content {
+  --background: #f4f4fb;
+}
+
+.period-selector {
+  padding: 14px 16px 8px;
+
+  ion-segment {
+    --background: #fff;
+    border-radius: 10px;
+    border: 0.5px solid var(--ion-color-light-shade);
+  }
+
+  ion-segment-button {
+    --color: var(--ion-color-medium);
+    --color-checked: var(--ion-color-primary);
+    --indicator-color: var(--ion-color-primary);
+    font-size: 13px;
+    min-height: 36px;
+  }
+}
+
+// Skeleton loading
+.skeleton-wrap {
+  padding: 0 16px;
+}
+
+.skeleton-balance {
+  height: 96px;
+  background: #e8e8f0;
+  border-radius: 16px;
+  margin-bottom: 10px;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.skeleton-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.skeleton-mini {
+  height: 80px;
+  background: #e8e8f0;
+  border-radius: 14px;
+  animation: pulse 1.4s ease-in-out infinite;
+
+  &:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1;   }
+  50%       { opacity: 0.5; }
+}

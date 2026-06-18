@@ -21,7 +21,7 @@ export class FinanceService {
     this.loadFromStorage()
   );
 
-  // ── Observables públicos ───────────────────────────────────
+  // ── Observables públicos  
 
   /** Stream de todas as transações */
   getTransactions$(): Observable<Transaction[]> {
@@ -63,7 +63,7 @@ export class FinanceService {
     return CATEGORIES.find(c => c.id === id);
   }
 
-  // ── Mutações ──────────────────────────────────────────────
+  // ── Mutações  
 
   addTransaction(dto: CreateTransactionDto): void {
     const newTx: Transaction = {
@@ -90,7 +90,7 @@ export class FinanceService {
     this.saveToStorage(updated);
   }
 
-  // ── Persistência ──────────────────────────────────────────
+  // ── Persistência 
 
   private loadFromStorage(): Transaction[] {
     try {
@@ -112,7 +112,7 @@ export class FinanceService {
     }
   }
 
-  // ── Cálculos ──────────────────────────────────────────────
+  // ── Cálculos 
 
   private calcSummary(txs: Transaction[]): FinanceSummary {
     const totalIncome  = txs.filter(t => t.type === 'income')

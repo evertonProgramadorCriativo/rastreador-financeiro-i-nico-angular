@@ -1,124 +1,80 @@
-import { Component , OnInit} from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Subject, takeUntil } from 'rxjs';
 import {
-  IonContent, IonHeader, IonTitle, IonToolbar
+  IonContent, IonHeader, IonTitle, IonToolbar,
+  IonButtons, IonButton, IonIcon, IonRefresher,
+  IonRefresherContent, IonSegment, IonSegmentButton,
+  IonLabel,
 } from '@ionic/angular/standalone';
-import { BaseChartDirective } from 'ng2-charts';
-import { ChartData, ChartOptions } from 'chart.js';
-import { CHART_COLORS, defaultChartOptions } from '../../core/chart.config';
+import { addIcons } from 'ionicons';
+import { notificationsOutline, refreshOutline } from 'ionicons/icons';
+
+import { FinanceService } from '../../core/services/finance.service';
+import { FinanceSummary } from '../../core/services/finance.types';
+import { SummaryCardsComponent } from '../../shared/components/summary-cards/summary-cards.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [
-    IonContent,
-     IonHeader, 
-     IonTitle,
-      IonToolbar,
-       BaseChartDirective
-   ],
-  template: `
-    <ion-header>
-      <ion-toolbar color="primary">
-        <ion-title>Dashboard</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content class="ion-padding">
-      <p>Dashboard .</p>  <h3 style="margin-bottom: 12px; font-size: 14px; color: var(--ion-color-medium)">
-        Gráfico de Linha
-      </h3>
-
-      <div class="chart-container">
-        <canvas
-          baseChart
-          [data]="lineData"
-          [options]="lineOptions"
-          type="line">
-        </canvas>
-      </div>
-
-      <h3 style="margin: 20px 0 12px; font-size: 14px; color: var(--ion-color-medium)">
-      Gráfico de Pizza
-      </h3>
-
-      <div class="chart-container">
-        <canvas
-          baseChart
-          [data]="pieData"
-          [options]="pieOptions"
-          type="pie">
-        </canvas>
-      </div>
-    </ion-content>
-  `,
+    CommonModule,
+    IonContent, IonHeader, IonTitle, IonToolbar,
+    IonButtons, IonButton, IonIcon,
+    IonRefresher, IonRefresherContent,
+    IonSegment, IonSegmentButton, IonLabel,
+    SummaryCardsComponent,
+  ],
+  templateUrl: './dashboard.page.html',
+  styleUrls: ['./dashboard.page.scss'],
 })
-export class DashboardPage implements OnInit {
+export class DashboardPage implements OnInit, OnDestroy {
+  summary: FinanceSummary | null = null;
+  selectedPeriod = '6m';
+  isLoading = true;
 
-  // ── Gráfico de linha 
+  private destroy$ = new Subject<void>();
 
-  lineData: ChartData<'line'> = {
-    labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun'],
-    datasets: [
-      {
-        label: 'Receitas',
-        data: [3200, 2800, 3600, 3100, 4200, 3800],
-        borderColor: CHART_COLORS.receitas.border,
-        backgroundColor: CHART_COLORS.receitas.background,
-        fill: true,
-        tension: 0.4,
-      },
-      {
-        label: 'Despesas',
-        data: [2400, 2200, 2900, 2700, 3100, 2600],
-        borderColor: CHART_COLORS.despesas.border,
-        backgroundColor: CHART_COLORS.despesas.background,
-        fill: true,
-        tension: 0.4,
-      },
-    ],
-  };
-
-   lineOptions: ChartOptions<'line'> = {
-     ...(defaultChartOptions as ChartOptions<'line'>),
-     plugins: {
-       ...((defaultChartOptions as ChartOptions<'line'>).plugins),
-       legend: {
-         ...((defaultChartOptions as ChartOptions<'line'>).plugins?.legend),
-         position: 'bottom',
-       },
-     },
-   };
-
-  // ── Gráfico de pizza  
-  pieData: ChartData<'pie'> = {
-    labels: ['Moradia', 'Alimentação', 'Transporte', 'Saúde', 'Lazer'],
-    datasets: [
-      {
-        data: [1200, 800, 350, 250, 300],
-        backgroundColor: CHART_COLORS.categorias,
-        borderWidth: 2,
-        borderColor: '#1e1e2e',
-      },
-    ],
-  };
-
-  pieOptions: ChartOptions<'pie'> = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        position: 'bottom',
-        labels: {
-          color: '#888780',
-          font: { size: 12 },
-          usePointStyle: true,
-          padding: 12,
-        },
-      },
-    },
-  };
+  constructor(private financeService: FinanceService) {
+    addIcons({ notificationsOutline, refreshOutline });
+  }
 
   ngOnInit(): void {
-    // Confirma no console que os gráficos carregaram
-    console.log(' ng2-charts configurado com sucesso!');
+    this.loadSummary();
   }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
+
+  loadSummary(): void {
+    this.isLoading = true;
+    this.financeService.getSummary$()
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(summary => {
+        this.summary = summary;
+        this.isLoading = false;
+      });
+  }
+
+  get periodLabel(): string {
+    const map: Record<string, string> = {
+      '3m': 'Últimos 3 meses',
+      '6m': 'Últimos 6 meses',
+      '1a': 'Último ano',
+    };
+    return map[this.selectedPeriod] ?? 'Período';
+  }
+
+  onPeriodChange(event: CustomEvent): void {
+    this.selectedPeriod = event.detail.value;
+  }
+
+  handleRefresh(event: CustomEvent): void {
+    setTimeout(() => {
+      this.loadSummary();
+      (event.target as HTMLIonRefresherElement).complete();
+    }, 800);
+  }
+}

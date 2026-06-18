@@ -1,0 +1,52 @@
+<div class="cards-wrapper">
+
+  <!-- Card principal: saldo -->
+  <ion-card class="balance-card">
+    <ion-card-content>
+      <div class="balance-label">
+        <ion-icon name="wallet-outline"></ion-icon>
+        <span>Saldo atual</span>
+      </div>
+      <div
+        class="balance-value"
+        [class.positive]="summary.totalBalance >= 0"
+        [class.negative]="summary.totalBalance < 0">
+        {{ summary.totalBalance | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+      </div>
+      <div class="balance-period">{{ periodLabel }}</div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Cards secundários: receitas e despesas -->
+  <div class="mini-grid">
+
+    <ion-card class="mini-card income">
+      <ion-card-content>
+        <div class="mini-top">
+          <div class="mini-icon income-icon">
+            <ion-icon name="trending-up-outline"></ion-icon>
+          </div>
+          <span class="mini-label">Receitas</span>
+        </div>
+        <div class="mini-value income-value">
+          {{ summary.totalIncome | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="mini-card expense">
+      <ion-card-content>
+        <div class="mini-top">
+          <div class="mini-icon expense-icon">
+            <ion-icon name="trending-down-outline"></ion-icon>
+          </div>
+          <span class="mini-label">Despesas</span>
+        </div>
+        <div class="mini-value expense-value">
+          {{ summary.totalExpense | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+</div>

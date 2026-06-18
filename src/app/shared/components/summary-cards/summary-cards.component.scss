@@ -1,0 +1,107 @@
+.cards-wrapper {
+  padding: 0 16px;
+}
+
+// ── Card de saldo  
+.balance-card {
+  border-radius: 16px;
+  box-shadow: none;
+  border: 0.5px solid rgba(83, 74, 183, 0.15);
+  margin: 0 0 10px;
+
+  ion-card-content {
+    text-align: center;
+    padding: 20px 16px;
+  }
+}
+
+.balance-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--ion-color-medium);
+  margin-bottom: 8px;
+
+  ion-icon {
+    font-size: 16px;
+  }
+}
+
+.balance-value {
+  font-size: 30px;
+  font-weight: 500;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+
+  &.positive { color: var(--ion-color-success); }
+  &.negative { color: var(--ion-color-danger);  }
+}
+
+.balance-period {
+  font-size: 11px;
+  color: var(--ion-color-medium-shade);
+}
+
+// ── Mini cards: receitas e despesas 
+.mini-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.mini-card {
+  border-radius: 14px;
+  box-shadow: none;
+  border: 0.5px solid var(--ion-color-light-shade);
+  margin: 0;
+
+  ion-card-content {
+    padding: 14px 12px;
+  }
+}
+
+.mini-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.mini-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  ion-icon { font-size: 18px; }
+}
+
+.income-icon {
+  background: #E1F5EE;
+  ion-icon { color: #0F6E56; }
+}
+
+.expense-icon {
+  background: #FCEBEB;
+  ion-icon { color: #A32D2D; }
+}
+
+.mini-label {
+  font-size: 11px;
+  color: var(--ion-color-medium);
+  font-weight: 500;
+}
+
+.mini-value {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.3px;
+}
+
+.income-value  { color: var(--ion-color-success); }
+.expense-value { color: var(--ion-color-danger);  }
