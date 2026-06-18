@@ -1,0 +1,41 @@
+<ion-card class="pie-card">
+  <ion-card-content>
+
+    <div class="card-header">
+      <ion-icon name="pie-chart-outline" class="card-icon"></ion-icon>
+      <span class="card-title">Gastos por categoria</span>
+    </div>
+
+    <div class="empty-state" *ngIf="!categories.length">
+      <ion-icon name="pie-chart-outline"></ion-icon>
+      <p>Nenhuma despesa registrada</p>
+    </div>
+
+    <div class="chart-layout" *ngIf="categories.length">
+      <div class="chart-wrap">
+        <canvas
+          baseChart
+          [data]="chartData"
+          [options]="chartOptions"
+          type="pie">
+        </canvas>
+      </div>
+
+      <div class="legend-list">
+        <div class="legend-item" *ngFor="let cat of categories">
+          <span class="legend-dot" [style.background]="cat.category.color"></span>
+          <span class="legend-name">{{ cat.category.name }}</span>
+          <span class="legend-pct">{{ cat.percentage }}%</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="total-row" *ngIf="categories.length">
+      <span class="total-label">Total de despesas</span>
+      <span class="total-value">
+        {{ totalExpense | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}
+      </span>
+    </div>
+
+  </ion-card-content>
+</ion-card>

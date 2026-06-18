@@ -1,0 +1,74 @@
+.line-card {
+  border-radius: 16px;
+  box-shadow: none;
+  border: 0.5px solid var(--ion-color-light-shade);
+  margin: 0 16px 10px;
+
+  ion-card-content {
+    padding: 16px;
+  }
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ion-text-color);
+
+  ion-icon {
+    font-size: 18px;
+    color: var(--ion-color-primary);
+  }
+}
+
+.legend-row {
+  display: flex;
+  gap: 12px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.legend-line {
+  display: inline-block;
+  width: 16px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.income-line  { background: #1D9E75; }
+.expense-line { background: #E24B4A; }
+
+.legend-label {
+  font-size: 11px;
+  color: var(--ion-color-medium);
+}
+
+.chart-wrap {
+  height: 180px;
+  position: relative;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 0;
+  gap: 8px;
+  color: var(--ion-color-medium);
+
+  ion-icon { font-size: 40px; opacity: 0.4; }
+  p        { font-size: 13px; margin: 0;   }
+}

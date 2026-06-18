@@ -1,0 +1,39 @@
+<ion-card class="line-card">
+  <ion-card-content>
+
+    <!-- Cabeçalho com título e legenda -->
+    <div class="card-header">
+      <div class="card-title">
+        <ion-icon name="trending-up-outline"></ion-icon>
+        <span>Evolução mensal</span>
+      </div>
+      <div class="legend-row">
+        <div class="legend-item">
+          <span class="legend-line income-line"></span>
+          <span class="legend-label">Receitas</span>
+        </div>
+        <div class="legend-item">
+          <span class="legend-line expense-line"></span>
+          <span class="legend-label">Despesas</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Estado vazio -->
+    <div class="empty-state" *ngIf="!monthlySummaries.length">
+      <ion-icon name="trending-up-outline"></ion-icon>
+      <p>Sem dados para exibir</p>
+    </div>
+
+    <!-- Gráfico de linha -->
+    <div class="chart-wrap" *ngIf="monthlySummaries.length">
+      <canvas
+        baseChart
+        [data]="chartData"
+        [options]="chartOptions"
+        type="line">
+      </canvas>
+    </div>
+
+  </ion-card-content>
+</ion-card>

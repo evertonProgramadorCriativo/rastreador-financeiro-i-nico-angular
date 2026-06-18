@@ -1,4 +1,4 @@
- <ion-header [translucent]="true">
+<ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-title>Dashboard</ion-title>
     <ion-buttons slot="end">
@@ -33,20 +33,38 @@
     </ion-segment>
   </div>
 
-  <!-- Cards de resumo -->
-  <app-summary-cards
-    *ngIf="summary && !isLoading"
-    [summary]="summary"
-    [periodLabel]="periodLabel">
-  </app-summary-cards>
+  <ng-container *ngIf="!isLoading && summary; else skeletonTpl">
+
+    <!-- Cards de resumo -->
+    <app-summary-cards
+      [summary]="summary"
+      [periodLabel]="periodLabel">
+    </app-summary-cards>
+
+    <!-- Gráfico de linha mensal -->
+    <app-line-chart
+      [monthlySummaries]="monthlySummaries">
+    </app-line-chart>
+
+    <!-- Gráfico de pizza por categoria -->
+    <app-pie-chart
+      [categories]="summary.byCategory"
+      [totalExpense]="summary.totalExpense">
+    </app-pie-chart>
+
+  </ng-container>
 
   <!-- Skeleton loading -->
-  <div class="skeleton-wrap" *ngIf="isLoading">
-    <div class="skeleton-balance"></div>
-    <div class="skeleton-row">
-      <div class="skeleton-mini"></div>
-      <div class="skeleton-mini"></div>
+  <ng-template #skeletonTpl>
+    <div class="skeleton-wrap">
+      <div class="skeleton-balance"></div>
+      <div class="skeleton-row">
+        <div class="skeleton-mini"></div>
+        <div class="skeleton-mini"></div>
+      </div>
+      <div class="skeleton-chart"></div>
+      <div class="skeleton-chart"></div>
     </div>
-  </div>
+  </ng-template>
 
 </ion-content>

@@ -1,0 +1,110 @@
+.pie-card {
+  border-radius: 16px;
+  box-shadow: none;
+  border: 0.5px solid var(--ion-color-light-shade);
+  margin: 0 16px 10px;
+
+  ion-card-content {
+    padding: 16px;
+  }
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.card-icon {
+  font-size: 18px;
+  color: var(--ion-color-primary);
+}
+
+.card-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ion-text-color);
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 32px 0;
+  gap: 8px;
+  color: var(--ion-color-medium);
+
+  ion-icon { font-size: 40px; opacity: 0.4; }
+  p        { font-size: 13px; margin: 0;   }
+}
+
+.chart-layout {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.chart-wrap {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.legend-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.legend-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-name {
+  flex: 1;
+  font-size: 12px;
+  color: var(--ion-color-medium-shade);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.legend-pct {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ion-text-color);
+  min-width: 28px;
+  text-align: right;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 0.5px solid var(--ion-color-light-shade);
+  padding-top: 12px;
+}
+
+.total-label {
+  font-size: 12px;
+  color: var(--ion-color-medium);
+}
+
+.total-value {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ion-color-danger);
+}
