@@ -1,0 +1,108 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>Finance Tracker</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="login-content">
+
+  <div class="login-container">
+
+    <!-- Logo e título -->
+    <div class="logo-area">
+      <div class="logo-circle">
+        <ion-icon name="cash-outline" class="logo-icon"></ion-icon>
+      </div>
+      <h1 class="login-title">Bem-vindo</h1>
+      <p class="login-subtitle">Faça login na sua conta</p>
+    </div>
+
+    <!-- Erro de credenciais -->
+    <div class="error-banner" *ngIf="loginError">
+      <ion-icon name="alert-circle-outline"></ion-icon>
+      <span>E-mail ou senha incorretos. Tente novamente.</span>
+    </div>
+
+    <!-- Formulário -->
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" novalidate>
+
+      <!-- Campo e-mail -->
+      <div class="field-group">
+        <label class="field-label">E-mail</label>
+        <div class="input-wrap" [class.input-error]="emailCtrl.invalid && emailCtrl.touched">
+          <ion-icon name="mail-outline" class="input-icon"></ion-icon>
+          <ion-input
+            formControlName="email"
+            type="email"
+            placeholder="seu@email.com"
+            autocomplete="email"
+            inputmode="email"
+            class="custom-input">
+          </ion-input>
+        </div>
+        <div class="field-error" *ngIf="emailCtrl.invalid && emailCtrl.touched">
+          <ion-icon name="alert-circle-outline"></ion-icon>
+          <span *ngIf="emailCtrl.errors?.['required']">E-mail obrigatório</span>
+          <span *ngIf="emailCtrl.errors?.['email']">Digite um e-mail válido</span>
+        </div>
+      </div>
+
+      <!-- Campo senha -->
+      <div class="field-group">
+        <label class="field-label">Senha</label>
+        <div class="input-wrap" [class.input-error]="passwordCtrl.invalid && passwordCtrl.touched">
+          <ion-icon name="lock-closed-outline" class="input-icon"></ion-icon>
+          <ion-input
+            formControlName="password"
+            [type]="showPassword ? 'text' : 'password'"
+            placeholder="Mínimo 6 caracteres"
+            autocomplete="current-password"
+            class="custom-input">
+          </ion-input>
+          <ion-icon
+            [name]="showPassword ? 'eye-off-outline' : 'eye-outline'"
+            class="input-icon-right"
+            (click)="togglePassword()">
+          </ion-icon>
+        </div>
+        <div class="field-error" *ngIf="passwordCtrl.invalid && passwordCtrl.touched">
+          <ion-icon name="alert-circle-outline"></ion-icon>
+          <span *ngIf="passwordCtrl.errors?.['required']">Senha obrigatória</span>
+          <span *ngIf="passwordCtrl.errors?.['minlength']">Mínimo de 6 caracteres</span>
+        </div>
+      </div>
+
+      <!-- Botão de login -->
+      <ion-button
+        type="submit"
+        expand="block"
+        color="primary"
+        class="btn-login"
+        [disabled]="isLoading">
+        <ion-spinner *ngIf="isLoading" name="crescent" slot="start"></ion-spinner>
+        <ion-icon *ngIf="!isLoading" name="log-in-outline" slot="start"></ion-icon>
+        {{ isLoading ? 'Entrando...' : 'Entrar' }}
+      </ion-button>
+
+    </form>
+
+    <!-- Divisor -->
+    <div class="divider">
+      <span>ou</span>
+    </div>
+
+    <!-- Botão de cadastro -->
+    <ion-button
+      expand="block"
+      fill="outline"
+      color="primary"
+      routerLink="/register"
+      class="btn-register">
+      <ion-icon name="person-add-outline" slot="start"></ion-icon>
+      Criar conta
+    </ion-button>
+
+  </div>
+
+</ion-content>
